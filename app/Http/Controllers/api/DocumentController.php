@@ -21,7 +21,7 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        return DocumentResource::collection(Document::paginate(10));
+        return DocumentResource::collection(Document::get());
     }
 
     /**

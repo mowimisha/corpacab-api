@@ -16,7 +16,7 @@ class OwnerController extends Controller
      */
     public function index()
     {
-        return OwnerResource::collection(User::where('role', 'owner')->paginate(15));
+        return OwnerResource::collection(User::where('role', 'owner')->get());
     }
 
     /**

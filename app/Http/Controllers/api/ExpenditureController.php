@@ -17,7 +17,7 @@ class ExpenditureController extends Controller
      */
     public function index()
     {
-        return ExpenditureResource::collection(Expenditure::paginate(15));
+        return ExpenditureResource::collection(Expenditure::get());
     }
 
     /**
