@@ -1,44 +1,42 @@
 <?php
 
-use Illuminate\Http\Request;
 
-Route::group(['prefix' => '/auth', ['middleware' => 'throttle:20,5']], function () {
-    Route::post('/register', 'Auth\RegisterController@register');
-    Route::post('/login', 'Auth\LoginController@login');
+Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
+    Route::post('signin', 'SignInController');
+    Route::post('signout', 'SignOutController');
+
+    Route::get('me', 'MeController');
 });
 
 
 Route::group(['prefix' => 'v1', ['middleware' => 'jwt.auth']], function () {
 
-    Route::get('/me', 'MeController@index');
-    Route::get('/auth/logout', 'MeController@logout');
-
-    Route::apiResource('users', 'UserController');
-    Route::apiResource('drivers', 'DriverController');
-    Route::apiResource('owners', 'OwnerController');
-    Route::apiResource('vehicles', 'VehicleController');
-    Route::apiResource('services', 'ServiceController');
-    Route::apiResource('documents', 'DocumentController');
-    Route::apiResource('expenses', 'ExpenseController');
-    Route::apiResource('expenditures', 'ExpenditureController');
+    Route::apiResource('users', 'api\UserController');
+    Route::apiResource('drivers', 'api\DriverController');
+    Route::apiResource('owners', 'api\OwnerController');
+    Route::apiResource('vehicles', 'api\VehicleController');
+    Route::apiResource('services', 'api\ServiceController');
+    Route::apiResource('documents', 'api\DocumentController');
+    Route::apiResource('expenses', 'api\ExpenseController');
+    Route::apiResource('expenditures', 'api\ExpenditureController');
 
 
-    Route::get('all-payments', 'MpesaController@driver_payments');
-    Route::get('show-payment/{id}', 'MpesaController@show_payment');
-    Route::get('account-balance', 'MpesaController@accountBalance');
-    Route::get('make-payment', 'MpesaController@makePayment');
-    Route::get('driver-pay2', 'MpesaController@STKPush1000');
-    Route::get('driver-pay3', 'MpesaController@STKPush1200');
-    Route::get('driver-pay4', 'MpesaController@STKPush1300');
-    Route::get('driver-pay5', 'MpesaController@STKPush1500');
-    Route::get('driver-pay6', 'MpesaController@STKPush1600');
-    Route::get('driver-pay7', 'MpesaController@STKPush1700');
-    Route::get('driver-pay8', 'MpesaController@STKPush1800');
-    Route::get('driver-pay9', 'MpesaController@STKPush2000');
-    Route::get('driver-pay10', 'MpesaController@STKPush2500');
-    Route::get('driver-pay11', 'MpesaController@STKPush3000');
-    Route::get('driver-pay12', 'MpesaController@STKPush3500');
-    Route::get('driver-pay13', 'MpesaController@STKPush4000');
-    Route::get('driver-pay14', 'MpesaController@STKPush4500');
-    Route::get('driver-pay15', 'MpesaController@STKPush5000');
+    Route::get('all-payments', 'api\MpesaController@driver_payments');
+    Route::get('show-payment/{id}', 'api\MpesaController@show_payment');
+    Route::get('account-balance', 'api\MpesaController@accountBalance');
+    Route::get('make-payment', 'api\MpesaController@makePayment');
+    Route::get('driver-pay2', 'api\MpesaController@STKPush1000');
+    Route::get('driver-pay3', 'api\MpesaController@STKPush1200');
+    Route::get('driver-pay4', 'api\MpesaController@STKPush1300');
+    Route::get('driver-pay5', 'api\MpesaController@STKPush1500');
+    Route::get('driver-pay6', 'api\MpesaController@STKPush1600');
+    Route::get('driver-pay7', 'api\MpesaController@STKPush1700');
+    Route::get('driver-pay8', 'api\MpesaController@STKPush1800');
+    Route::get('driver-pay9', 'api\MpesaController@STKPush2000');
+    Route::get('driver-pay10', 'api\MpesaController@STKPush2500');
+    Route::get('driver-pay11', 'api\MpesaController@STKPush3000');
+    Route::get('driver-pay12', 'api\MpesaController@STKPush3500');
+    Route::get('driver-pay13', 'api\MpesaController@STKPush4000');
+    Route::get('driver-pay14', 'api\MpesaController@STKPush4500');
+    Route::get('driver-pay15', 'api\MpesaController@STKPush5000');
 });

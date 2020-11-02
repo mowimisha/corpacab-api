@@ -60,10 +60,21 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
+    /**
+     * Show the relation between user and vehicle model
+     *
+     * @return vehicle
+     */
     public function vehicle()
     {
         return $this->hasMany('App\Models\Vehicle');
     }
+
+    /**
+     * Show relation between user and document model
+     *
+     * @return document
+     */
 
     public function document()
     {
