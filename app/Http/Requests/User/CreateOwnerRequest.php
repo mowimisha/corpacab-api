@@ -29,7 +29,7 @@ class CreateOwnerRequest extends FormRequest
             'email' => 'required|email|max:255|unique:users',
             'phone' => 'required|string',
             'password' => 'required|string|min:6',
-            'role' => 'required'
+            'role' => 'string'
         ];
     }
 }

@@ -4,6 +4,8 @@
 Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
     Route::post('signin', 'SignInController');
     Route::post('signout', 'SignOutController');
+    Route::post('register-driver', 'RegisterController@register_driver');
+    Route::post('register-owner', 'RegisterController@register_owner');
 
     Route::get('me', 'MeController');
 });
