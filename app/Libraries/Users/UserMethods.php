@@ -3,8 +3,8 @@
 namespace App\Libraries\Users;
 
 use Exception;
-use App\Vehicle;
 use App\Models\User;
+use App\Models\Vehicle;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
@@ -72,7 +72,7 @@ class UserMethods
         $us->name = $request->name;
         $us->lastname = $request->lastname;
         $us->email = $request->email;
-        $us->password = bcrypt($request->password);
+        $us->password = bcrypt($request->name . '@123');
         $us->role = $request->role;
         $us->save();
     }
@@ -127,7 +127,7 @@ class UserMethods
         $us->email = $request->email;
         $us->role = 'driver';
         $us->national_id = $request->national_id;
-        $us->password = bcrypt($request->password);
+        $us->password = bcrypt($request->name . '@123');
         $us->phone = $request->phone;
         $us->status = $request->status;
 
@@ -274,7 +274,7 @@ class UserMethods
         $us->name = $request->name;
         $us->lastname = $request->lastname;
         $us->email = $request->email;
-        $us->password = bcrypt($request->password);
+        $us->password = bcrypt($request->name . '@123');
         $us->role = 'owner';
         $us->phone = $request->phone;
         $us->save();
@@ -288,7 +288,7 @@ class UserMethods
         $us->email = $request->email;
         $us->phone = $request->phone;
         $us->role = 'owner';
-        $us->password = bcrypt('owner123');
+        $us->password = bcrypt($request->name . '@123');
         $us->save();
     }
 

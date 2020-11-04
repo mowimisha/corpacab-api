@@ -16,6 +16,7 @@ class RegisterController extends Controller
             'lastname' => $request->lastname,
             'email' => $request->email,
             'phone' => $request->phone,
+            'role' => 'driver',
             'national_id' => $request->national_id,
         ]);
 
@@ -29,7 +30,8 @@ class RegisterController extends Controller
             'lastname' => $request->lastname,
             'email' => $request->email,
             'phone' => $request->phone,
-            'password' => bcrypt($request->name . '123'),
+            'role' => 'owner',
+            'password' => bcrypt($request->name . '@123'),
         ]);
 
         return response()->json($user, 201);
